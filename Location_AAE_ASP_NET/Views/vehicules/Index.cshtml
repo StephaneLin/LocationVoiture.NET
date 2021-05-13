@@ -1,0 +1,80 @@
+﻿@model PagedList.IPagedList<Location_AAE_ASP_NET.Models.Vehicule>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vehicule</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "vehicules", FormMethod.Get))
+{
+    <p>
+        Search: @Html.TextBox("Search", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Find" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("VehiculeId", "Index", new { sortOrder = ViewBag.SortingId, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Marque", "Index", new { sortOrder = ViewBag.SortingMarque, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Modele", "Index", new { sortOrder = ViewBag.SortingModele, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Année", "Index", new { sortOrder = ViewBag.SortingYear, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Kilométrage", "Index", new { sortOrder = ViewBag.SortingKm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Prix", "Index", new { sortOrder = ViewBag.SortingPrix, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.vehiculeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modele)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.annee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kilometrage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prix)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.vehiculeId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.vehiculeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.vehiculeId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -1,0 +1,82 @@
+﻿@model Location_AAE_ASP_NET.Models.Vehicule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>vehicule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.maintenance.PK_maintenanceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maintenance.PK_maintenanceId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parking.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parking.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modele)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modele)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.annee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.annee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kilometrage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kilometrage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prix)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.vehiculeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

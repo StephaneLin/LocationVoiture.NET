@@ -1,0 +1,137 @@
+﻿@model Location_AAE_ASP_NET.ViewModels.SearchViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Recherche Avancée</h2>
+
+@using (Html.BeginForm("Index", "Search", FormMethod.Get))
+{
+    <p>
+        Search: @Html.TextBox("searchString")
+        <input type="submit" value="Find" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <th>Nombre de Voitures</th>
+        <th>Telephone</th>
+    </tr>
+
+    @foreach (var item in Model.Parkings)
+    {
+        <tr>
+            <td>@item.name</td>
+            <td>@item.address</td>
+            <td>@item.nbrCar</td>
+            <td>@item.phoneNumber</td>
+        </tr>
+    }
+</table>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>UserId</th>
+        <th>Date</th>
+        <th>Company Name</th>
+        <th>Company Phone</th>
+        <th>Siret</th>
+        <th>User LastName</th>
+        <th>User FirstName</th>
+        <th>User Phone</th>
+        <th>User YearOld</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.connexionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.companyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.companyPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.siret)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userYearOld)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Utilisateurs", new { id = item.userId }, null) |
+                @Html.ActionLink("Details", "Details", "Utilisateurs", new { id = item.userId }, null) |
+                @Html.ActionLink("Delete", "Delete", "Utilisateurs", new { id = item.userId }, null)
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>VehiculeId</th>
+        <th>Marque</th>
+        <th>Modele</th>
+        <th>Année</th>
+        <th>Kilométrage</th>
+        <th>Prix</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Cars)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.vehiculeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modele)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.annee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kilometrage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prix)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "vehicules", new { id = item.vehiculeId }, null) |
+                @Html.ActionLink("Details", "Details", "vehicules", new { id = item.vehiculeId }, null) |
+                @Html.ActionLink("Delete", "Delete", "vehicules", new { id = item.vehiculeId }, null)
+            </td>
+        </tr>
+    }
+
+</table>

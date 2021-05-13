@@ -1,0 +1,103 @@
+﻿@model PagedList.IPagedList<Location_AAE_ASP_NET.Models.Utilisateur>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Utilisateurs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "utilisateurs", FormMethod.Get))
+{
+    <p>
+        Search: @Html.TextBox("Search", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Find" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("UserId", "Index", new { sortOrder = ViewBag.SortingId, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.SortingDate, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Company Name", "Index", new { sortOrder = ViewBag.SortingCompanyName, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Company Phone", "Index", new { sortOrder = ViewBag.SortingCompanyPhone, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Siret", "Index", new { sortOrder = ViewBag.SortingSiret, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("User LastName", "Index", new { sortOrder = ViewBag.SortingLastName, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("User FirstName", "Index", new { sortOrder = ViewBag.SortingFirstName, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("User Phone", "Index", new { sortOrder = ViewBag.SortingUserPhone, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("User YearOld", "Index", new { sortOrder = ViewBag.SortingYearOld, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.SortingEmail, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.connexionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.companyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.companyPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.siret)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userYearOld)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.userId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.userId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.userId })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

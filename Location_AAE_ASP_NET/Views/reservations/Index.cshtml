@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<Location_AAE_ASP_NET.Models.Reservation>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "reservations", FormMethod.Get))
+{
+    <p>
+        Search: @Html.TextBox("Search", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Find" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("ReservationId", "Index", new { sortOrder = ViewBag.SortingId, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Debut", "Index", new { sortOrder = ViewBag.SortingDebutDate, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Fin", "Index", new { sortOrder = ViewBag.SortingFinDate, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.SortingStatus, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.SortingDate, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.reservationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.debutDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.finDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reservationDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.reservationId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.reservationId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.reservationId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -1,0 +1,61 @@
+﻿@using Location_AAE_ASP_NET.Models;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Vehicules Disponibles";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            marque
+        </th>
+        <th>
+            modele
+        </th>
+        <th>
+            annee
+        </th>
+        <th>
+            kilometrage 
+        </th>
+        <th>
+            photo
+        </th>
+        <th>
+            prix
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in TempData["voituresRequete"] as IList<Vehicule>)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.marque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modele)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.annee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kilometrage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prix)
+            </td>
+            <td>
+                @Html.ActionLink("Book", "Book", new { id = item.vehiculeId })
+            </td>
+        </tr>
+    }
+
+</table>

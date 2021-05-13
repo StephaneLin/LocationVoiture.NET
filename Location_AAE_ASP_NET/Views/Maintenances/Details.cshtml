@@ -1,0 +1,50 @@
+﻿@model Location_AAE_ASP_NET.Models.Maintenance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Maintenance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.framework)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.framework)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.electronics)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.electronics)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PK_maintenanceId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

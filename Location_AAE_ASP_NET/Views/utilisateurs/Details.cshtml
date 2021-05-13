@@ -1,0 +1,122 @@
+﻿@model Location_AAE_ASP_NET.Models.Utilisateur
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>utilisateur</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.droit_acces.role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.droit_acces.role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.entity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.entity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.connexionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.connexionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.siret)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.siret)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userYearOld)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userYearOld)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.licence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licence)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.userId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

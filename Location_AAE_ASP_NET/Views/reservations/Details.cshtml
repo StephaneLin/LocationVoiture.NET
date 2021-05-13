@@ -1,0 +1,66 @@
+﻿@model Location_AAE_ASP_NET.Models.Reservation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>reservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.utilisateur.entity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.utilisateur.entity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicule1.marque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehicule1.marque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.debutDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.debutDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.finDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.finDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reservationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reservationDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.reservationId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

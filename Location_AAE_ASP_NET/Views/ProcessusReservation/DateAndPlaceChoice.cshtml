@@ -1,0 +1,83 @@
+﻿@model Location_AAE_ASP_NET.ViewModels.ProcessusReservationViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Nouvelle réservation";
+}
+
+@using (Html.BeginForm("DateAndPlaceChoice", "ProcessusReservation", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Commencez votre voyage ici!</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.Label("From", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="editor-label">
+                @Html.Label("Year (YYYY)")
+            </div>
+            <div class="editor-field">
+                @Html.Editor("StartYear")
+                @Html.ValidationMessage("StartYear")
+            </div>
+            <div class="editor-label">
+                @Html.Label("Month (MM)")
+            </div>
+            <div class="editor-field">
+                @Html.Editor("StartMonth")
+                @Html.ValidationMessage("StartMonth")
+            </div>
+            <div class="editor-label">
+                @Html.Label("Day (DD)")
+            </div>
+            <div class="editor-field">
+                @Html.Editor("StartDay")
+                @Html.ValidationMessage("StartDay")
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("To", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="editor-label">
+                @Html.Label("Year (YYYY)")
+            </div>
+            <div class="editor-field">
+                @Html.Editor("EndYear")
+                @Html.ValidationMessage("EndYear")
+            </div>
+            <div class="editor-label">
+                @Html.Label("Month (MM)")
+            </div>
+            <div class="editor-field">
+                @Html.Editor("EndMonth")
+                @Html.ValidationMessage("EndMonth")
+            </div>
+            <div class="editor-label">
+                @Html.Label("Day (DD)")
+            </div>
+            <div class="editor-field">
+                @Html.Editor("EndDay")
+                @Html.ValidationMessage("EndDay")
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Parking.name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("name", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Parking.name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Explorer parmi les vehicules disponibles" class="btn btn-default" />
+        </div>
+    </div>
+}
